@@ -55,8 +55,8 @@
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [
         "FiraCode"
-	"Hack"
-	"JetBrainsMono"
+        "Hack"
+        "JetBrainsMono"
       ]; })
       noto-fonts
       noto-fonts-cjk
