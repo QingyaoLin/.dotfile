@@ -4,7 +4,10 @@
   imports = [
     ./picom.nix
     ./bspwm.nix
-    ./sxhkd.nix
+    ./sxhkd
+    ./polybar.nix
+    ./rofi.nix
+    ./dunst.nix
   ];
 
   xsession.enable = true;

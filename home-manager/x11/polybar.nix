@@ -2,9 +2,19 @@
 
 {
   config = lib.mkIf (config.xsession.enable) {
-    home.packages = with pkgs; [
-      polybar
-    ];
+    services.polybar = {
+      enable = true;
+      package = pkgs.polybar.override {
+        pulseSupport = true;
+        iwSupport = true;
+      };
+      script = "polybar -q mybar &";
+    };
+
+    # home.packages = with pkgs; [
+    #  polybar
+    # ];
+
     home.file = {
       ".config/polybar" = {
         recursive = true;

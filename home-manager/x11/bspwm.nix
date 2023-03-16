@@ -5,11 +5,16 @@
     enable = true;
     alwaysResetDesktops = true;
     startupPrograms = [
-      "sxhkd"
-      "~/.config/polybar/launch.sh"
     ];
     # xrandr
     monitors = {
+      eDP-1 = [
+        "I"
+	"II"
+	"III"
+	"IV"
+	"V"
+      ];
     };
     rules = {
       "Microsoft-edge" = {
@@ -30,6 +35,8 @@
     extraConfigEarly =
     ''
       systemctl --user start bspwm-session.target 
+      systemctl --user start polybar.service
+      systemctl --user start dunst.service
     '';
   };
   systemd.user.targets.bspwm-session = {

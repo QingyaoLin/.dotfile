@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-home-manager switch -f ./home-manager/home.nix
+home-manager switch -b backup -f ./home-manager/home.nix
