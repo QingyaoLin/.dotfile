@@ -138,7 +138,6 @@
     vim
     neovim
     wget
-    rofi
     alacritty
     dunst
     feh
