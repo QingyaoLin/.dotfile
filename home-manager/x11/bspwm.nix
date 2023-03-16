@@ -8,6 +8,7 @@
       "sxhkd"
       "~/.config/polybar/launch.sh"
     ];
+    # xrandr
     monitors = {
     };
     rules = {
