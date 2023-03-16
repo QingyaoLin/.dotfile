@@ -2,14 +2,14 @@
 
 {
   config = lib.mkIf (config.xsession.enable) {
-    services.polybar = {
-      enable = true;
-      package = pkgs.polybar.override {
-        alsaSupport = true;
-        iwSupport = true;
+    home.packages = with pkgs; [
+      polybar
+    ];
+    home.file = {
+      ".config/polybar" = {
+        recursive = true;
+        source = config.lib.file.mkOutOfStoreSymlink ../../config/polybar;
       };
-      config = ~/.dotfile/config/polybar/config.ini;
-      script = "polybar mybar &";
     };
   };
 }
