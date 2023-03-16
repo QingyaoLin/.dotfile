@@ -9,6 +9,7 @@
         iwSupport = true;
       };
       config = ~/.dotfile/config/polybar/config.ini;
+      script = "polybar mybar &";
     };
   };
 }
