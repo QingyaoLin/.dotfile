@@ -1,2 +1,2 @@
 # .dotfile
-my ot file
+my dot file
