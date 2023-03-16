@@ -139,8 +139,6 @@
     vim
     neovim
     wget
-    git
-    polybar
     rofi
     alacritty
     dunst
