@@ -98,7 +98,6 @@
     enable = true;
     layout = "us";
     displayManager.startx.enable = true;
-    # windowManager.bspwm.enable = true;
     logFile = "/tmp/Xorg.0.log";
   };
 
