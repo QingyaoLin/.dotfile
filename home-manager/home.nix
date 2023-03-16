@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./x11/home.nix
+    ./x11
     ./git.nix
   ];
 
