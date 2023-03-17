@@ -4,7 +4,7 @@
   imports = [
     ./picom.nix
     ./bspwm.nix
-    ./sxhkd
+    ./sxhkd.nix
     ./polybar.nix
     ./rofi.nix
     ./dunst.nix

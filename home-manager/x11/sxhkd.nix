@@ -1,11 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
-  config = lib.mkIf (config.xsession.enable) {
-    services.sxhkd = {
-      enable = true;
-      extraConfig =
-      ''
+  services.sxhkd = {
+    enable = true;
+    extraConfig =
+    ''
 # using `nix-shell -p xorg.xev --run "xev -event keyboard"` will run xev,
 # with filtering for keyboard events.
 
@@ -182,7 +181,6 @@ XF86Audio{Mute,Stop}
 #XF86MonBrightness{Down,Up}
 #   brightnessctl set 5%{-,+}
 
-      '';
-    };
+    '';
   };
 }
