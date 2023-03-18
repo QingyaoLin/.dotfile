@@ -5,6 +5,7 @@
     enable = true;
     alwaysResetDesktops = true;
     startupPrograms = [
+      "sxhdk"
     ];
     # xrandr
     monitors = {
