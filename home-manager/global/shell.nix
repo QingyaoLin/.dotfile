@@ -1,13 +1,13 @@
 { lib, config, pkgs, ... }:
 
 {
-  home.language.base = "en_US.UTF-8";
+  # home.language.base = "en_US.UTF-8";
 
-  # home.sessionVariables = {
-  #   http_proxy = "http://127.0.0.1:7890";
-  #   https_proxy = "http://127.0.0.1:7890";
-  #   all_proxy = "socks5://127.0.0.1:7890";
-  # };
+  home.sessionVariables = {
+    http_proxy = "http://127.0.0.1:7890";
+    https_proxy = "http://127.0.0.1:7890";
+#    all_proxy = "socks5://127.0.0.1:7890";
+  };
 
   home.shellAliases = {
     ls = "ls --color=auto";

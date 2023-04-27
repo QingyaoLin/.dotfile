@@ -28,12 +28,16 @@ in
       "numlockx on"
       "polybar -q mybar"
       "xss-lock --ignore-sleep -- i3lock -i ~/.wallpaper/01.png"
+      "ibus-daemon"
       "picom --experimental-backends"
       "feh --bg-fill --randomize ~/.wallpaper/*"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
     extraConfigEarly =
       ''
+        GTK_IM_MODULE=ibus
+        QT_IM_MODULE=ibus
+        XMODIFIERS=@im=ibus
         bspc monitor -d I II III IV V
       '';
     settings = {
