@@ -25,7 +25,7 @@
         fi
 
         # 设置 session lock 超时的时间
-        xset s 60
+        xset s 600
         # 合并 .Xresources 配置,设置鼠标主题
         xrdb -merge ~/.Xresources
         xsetroot -cursor_name left_ptr
