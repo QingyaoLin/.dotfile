@@ -45,7 +45,7 @@ in
         format-muted-foreground = "#${colors.base0A}";
         format-volume = "<ramp-volume> <label-volume>";
         format-volume-foreground = "#${colors.base08}";
-        ramp-volume = [ " " " " " " " " ];
+        ramp-volume = [ "" "" "" "" ];
         click-right = "pavucontrol";
       };
       "module/bspwm" = {
@@ -81,7 +81,7 @@ in
         use-actual-brightness = true;
         enable-scroll = true;
         label = "%percentage%%";
-        ramp = [ " " " " " " " " ];
+        ramp = [ "" "" "" "" ];
         format = "<ramp> <label>";
         format-foreground = "#${colors.base0E}";
       };
