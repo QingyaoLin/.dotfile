@@ -1,2 +1,2 @@
-# .dotfile
+# dot-config
 my dot file
