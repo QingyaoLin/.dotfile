@@ -1,0 +1,187 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# 用于指定 执行命令的超时时间
+command_timeout = 10000 # 默认 500
+
+# 用于指定 扫描文件的超时时间
+scan_timeout = 50 # 默认 30
+
+
+# 用户名
+[username]
+format = " [╭─$user]($style)@"
+# format = "[]($style) "
+# format = "[user]($style) "
+disabled = false
+show_always = true
+style_root = "bold red"
+style_user = "bold red"
+# style_user = "white bold"
+# style_root = "red bold"
+
+[hostname]
+disabled = false
+format = "[$hostname]($style) in "
+# format = "on [$hostname](bold red) "
+ssh_only = false
+style = "bold dimmed red"
+trim_at = "-"
+# trim_at = ".companyname.com"
+
+# Third param
+[directory]
+style = "purple"
+truncate_to_repo = true
+truncation_length = 3
+# truncation_symbol = "repo: "
+use_os_path_sep = false
+
+
+# Fourth param
+[sudo]
+disabled = false
+
+# Last param in the first line/row
+[cmd_duration]
+disabled = false
+format = "took [$duration]($style)"
+min_time = 1
+
+[git_metrics]
+added_style = "bold blue"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+disabled = false
+
+[git_status]
+conflicted = "🏳"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = "✓"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged = '[++\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"
+style = "white"
+
+[battery]
+charging_symbol = ""
+disabled = true
+discharging_symbol = ""
+full_symbol = ""
+# full_symbol = "💀 " # 🔋
+# charging_symbol = "💀 " # ⚡️
+# discharging_symbol = "💀 "
+
+[[battery.display]] # "bold red" style when capacity is between 0% and 15%
+disabled = false
+style = "bold red"
+threshold = 15
+
+[[battery.display]] # "bold yellow" style when capacity is between 15% and 50%
+disabled = true
+style = "bold yellow"
+threshold = 50
+
+[[battery.display]] # "bold green" style when capacity is between 50% and 80%
+disabled = true
+style = "bold green"
+threshold = 80
+
+# Prompt: optional param 1
+[time]
+disabled = true
+format = " 🕙 $time($style)\n"
+style = "bright-white"
+time_format = "%T"
+
+# Prompt: param 2
+[character]
+error_symbol = " [x](bold red)"
+success_symbol = " [╰─λ](bold red)"
+
+# Replace the "❯" symbol in the prompt with "➜"
+# [character] # The name of the module we are configuring is "character"
+# success_symbol = "🚀 [❯❯❯](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+# error_symbol = "🚀 [✗](bold red) "      # 当 命令失败是 提示符样式
+# vicmd_symbol = "🚀 [V](bold green) "    # 自定义 vim 形状 不知道有什么用
+
+# SYMBOLS
+[status]
+disabled = false
+format = '[\[$symbol\]]($style)'
+map_symbol = true
+pipestatus = true
+symbol = "🔴"
+
+[aws]
+symbol = " "
+
+[c]
+commands = [['cc', '--version'], ['clang', '--version'], ['gcc', '--version']]
+
+[cmake]
+symbol = "喝 "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "

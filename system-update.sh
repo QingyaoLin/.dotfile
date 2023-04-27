@@ -1,2 +1,5 @@
-#! /usr/bin/env bash
-sudo nixos-rebuild switch -I nixos-config=./nixos/configuration.nix
+#!/usr/bin/env bash
+
+git pull
+
+sudo nixos-rebuild switch --flake .#NixOS

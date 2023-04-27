@@ -1,174 +1,99 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# This is your system's configuration file.
+# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
-{ config, pkgs, ... }:
+{ inputs, outputs, lib, config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+  # You can import other NixOS modules here
+  imports = [
+    # If you want to use modules your own flake exports (from modules/nixos):
+    # outputs.nixosModules.example
+  ] ++ [
+    # Or modules from other flakes (such as nixos-hardware):
+    # inputs.hardware.nixosModules.common-cpu-amd
+    # inputs.hardware.nixosModules.common-ssd
+  ] ++ [
+    # You can also split up your configuration and import pieces of it here:
+    ./desktop/bspwm.nix
 
-      # Nvidia and Intel drivers
-      ./nvidia-intel-drivers.nix
+    ./global/tty.nix
+    ./global/users.nix
+    ./global/sound.nix
+    ./global/network.nix
+    ./global/openssh.nix
+    ./global/backlight.nix
+    ./global/boot-loader.nix
+    ./global/localization.nix
+    ./global/swap-keyboard.nix
+    ./global/nvidia-intel-drivers.nix
+  ] ++ [
+    # Import your generated (nixos-generate-config) hardware configuration
+    ./hardware-configuration.nix
+  ];
 
-      # Switch CapsLock and Esc
-      ./keyboard.nix
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
     ];
-
-
-  boot.loader = {
-    grub.device = "nodev";
-    grub.efiSupport = true;
-    grub.font = "${pkgs.grub2}/share/grub/unicode.pf2";
-    grub.theme = pkgs.nixos-grub2-theme;
-    efi.efiSysMountPoint = "/boot/efi";
-    efi.canTouchEfiVariables = true;
-    grub.extraEntries =
-    ''
-      menuentry 'Windows Boot Manager (on /dev/sda1)' --class windows --class os $menuentry_id_option 'osprober-efi-CC5C-D868' {
-         insmod part_gpt
-	 insmod fat
-	 set root='hd0,gpt1'
-	 if [ x$feature_platform_search_hint = xy ]; then
-             search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt1 --hint-efi=hd0,gpt1 --hint-baremetal=ahci0,gpt1  CC5C-D868
-	 else
-	     search --no-floppy --fs-uuid --set=root CC5C-D868
-	 fi
-	 chainloader /efi/Microsoft/Boot/bootmgfw.efi
-       }
-    '';
-  };
-
-
-  # Setting network.
-  networking = {
-    hostName = "NixOS";
-    networkmanager.enable = true;
-  };
-  #programs.nm-applet.enable = true;
-
-
-  # Set your time zone.
-  time.timeZone = "Asia/Shanghai";
-
-
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "zh_CN.UTF-8";
-    inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
+    # Configure your nixpkgs instance
+    config = {
+      # Enable unfree packages
+      allowUnfree = true;
+      # Support pulseaudio
+      pulseaudio = true;
     };
   };
 
+  nix = {
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [
-        "FiraCode"
-        "Hack"
-        "JetBrainsMono"
-      ]; })
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji # Color and Black-and-White emoji fonts
-      twemoji-color-font # Twitter emoji
-    ];
-    fontconfig.defaultFonts = {
-      serif = [
-        "Noto Sans CJK SC"
-        "Noto Sans"
-      ];
-      sansSerif = [
-        "Noto Sans CJK SC"
-        "Noto Sans"
-      ];
-      monospace = [
-        "Noto Sans Mono CJK SC"
-        "Symbols Nerd Font"
-      ];
-      emoji = [
-        "Twemoji"
-      ];
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+
+    settings = {
+      # Enable flakes and new 'nix' command
+      experimental-features = "nix-command flakes";
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
     };
   };
 
-
-  # Setting TTY
-  console = {
-    earlySetup = true;
-    font = "ter-v32n";
-    keyMap = "us";
-    packages = with pkgs; [ terminus_font ];
-  };
-  services.getty.autologinUser = "lqy";
-
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    displayManager.startx.enable = true;
-    logFile = "/tmp/Xorg.0.log";
-  };
-
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-
-  # Pulseaudio config
-  hardware.pulseaudio = {
-    enable = true;
-    support32Bit = true;
-    package = pkgs.pulseaudioFull;
-  };
-  nixpkgs.config.pulseaudio = true;
-  security.rtkit.enable = true;
-
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.lqy = {
-    description = "LQY's home";
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
-    initialPassword = "lqy";
-    packages = with pkgs; [
-      microsoft-edge
-    ];
-  };
-
+  # Add the rest of your current configuration:
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    neovim
-    wget
-    alacritty
-    feh
-    killall
-    eww
-    neofetch
-    brightnessctl
-    clash
-    pavucontrol
-    gnome.gucharmap
-    tdesktop
-    papirus-icon-theme
-    (callPackage ../pkgs/polkit-gnome.nix {})
+
   ];
-  programs.light.enable = true;
 
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
 
-  # List services that you want to enable:
+  # Enable xserver
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    logFile = "/tmp/Xorg.0.log";
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+  };
 
   # dbus config
   services.dbus.packages = [ pkgs.gcr ];
@@ -176,22 +101,6 @@
   # Polkit config
   security.polkit.enable = true;
 
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    permitRootLogin = "yes";
-  };
-
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
-
-  nixpkgs.config.allowUnfree = true;
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  system.stateVersion = "22.11";
 }
-

@@ -1,2 +1,5 @@
-#! /usr/bin/env bash
-home-manager switch -b backup -f ./home-manager/home.nix
+#!/usr/bin/env bash
+
+git pull
+
+home-manager switch --flake .#lqy@NixOS
