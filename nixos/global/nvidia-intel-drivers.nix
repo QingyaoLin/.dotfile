@@ -1,3 +1,4 @@
+# TODO:现有相关的模块了，可以迁移过去！！！
 # https://nixos.wiki/wiki/Intel_Graphics
 # https://nixos.wiki/wiki/Accelerated_Video_Playback
 # https://nixos.org/manual/nixos/stable/index.html#sec-gpu-accel
