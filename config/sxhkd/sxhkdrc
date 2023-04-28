@@ -150,7 +150,7 @@ super + shift + {Left,Down,Up,Right}
 
 # Locker session
 super + d
-        i3lock -i ~/.wallpaper/01.png 
+        i3lock-fancy
 
 #
 # =================== Audio volume =================
