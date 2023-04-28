@@ -4,9 +4,11 @@
   # home.language.base = "en_US.UTF-8";
 
   home.sessionVariables = {
-    http_proxy = "http://127.0.0.1:7890";
-    https_proxy = "http://127.0.0.1:7890";
-#    all_proxy = "socks5://127.0.0.1:7890";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    # http_proxy = "http://127.0.0.1:7890";
+    # https_proxy = "http://127.0.0.1:7890";
+    # all_proxy = "socks5://127.0.0.1:7890";
   };
 
   home.shellAliases = {
@@ -16,6 +18,7 @@
     l = "ls -alh";
     ".." = "cd ./..";
     "..." = "cd ../..";
+    v = "nvim";
   };
 
   # Plugs:

@@ -16,6 +16,7 @@
     ./global/git.nix
     ./global/gtk.nix
     ./global/vim.nix
+    ./global/music.nix
     ./global/clash.nix
     ./global/shell.nix
     ./global/colors.nix
