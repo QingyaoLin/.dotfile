@@ -4,4 +4,4 @@
   home.packages = with pkgs; [
     unstable.yesplaymusic
   ];
-};
+}
