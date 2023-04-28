@@ -17,11 +17,14 @@
     ./desktop/bspwm.nix
 
     ./global/tty.nix
+    ./global/cpu.nix
+    ./global/power.nix
     ./global/users.nix
     ./global/sound.nix
     ./global/network.nix
     ./global/openssh.nix
     ./global/backlight.nix
+    ./global/bluetooth.nix
     ./global/boot-loader.nix
     ./global/localization.nix
     ./global/swap-keyboard.nix

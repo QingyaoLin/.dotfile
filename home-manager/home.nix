@@ -27,6 +27,7 @@
     ./global/wallpaper.nix
     ./global/backlight.nix
     ./global/inputmethod.nix
+    ./global/resource-monitor.nix
   ] ++ [
     ./desktop/bspwm.nix
   ];
