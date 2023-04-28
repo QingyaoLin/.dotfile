@@ -30,7 +30,7 @@ in
       "xss-lock --ignore-sleep -- i3lock -i ~/.wallpaper/01.png"
       "fcitx5"
       "picom --experimental-backends"
-      "feh --bg-fill --randomize ~/.wallpaper/*"
+      "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
     extraConfigEarly =
