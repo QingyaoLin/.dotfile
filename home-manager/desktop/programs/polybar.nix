@@ -27,6 +27,13 @@ in
         modules-left = "log bspwm temperature xwindow";
         modules-center = "date";
         modules-right = "backlight memory cpu network pulseaudio battery";
+	tray-position = "left";
+	tray-detached = false;
+	tray-background = "\${root.background}";
+	tray-foreground = "\${root.foreground}";
+	tray-offset-x = 0;
+        tray-offset-y = 0;
+	tray-scale = 1.0;
         wm-restack = "bspwm";
         dpi = 0;
         enable-ipc = true;
