@@ -27,7 +27,7 @@ in
       "sxhkd"
       "numlockx on"
       "polybar -q mybar"
-      "xss-lock --ignore-sleep -- i3lock -i ~/.wallpaper/01.png"
+      "xss-lock --ignore-sleep -- i3lock-fancy"
       "fcitx5"
       "picom --experimental-backends"
       "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
