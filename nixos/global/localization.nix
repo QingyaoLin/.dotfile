@@ -8,10 +8,20 @@
 
   # Select internationalisation properties.
   i18n = {
-    defaultLocale = "zh_CN.UTF-8";
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [
+      "en_US.UTF-8"
+      "zh_CN.UTF-8"
+    ];
     inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-rime
+        fcitx5-chinese-addons
+        fcitx5-table-extra
+        fcitx5-pinyin-moegirl
+        fcitx5-pinyin-zhwiki
+      ];
     };
   };
 

@@ -26,6 +26,7 @@
     ./global/terminal.nix
     ./global/wallpaper.nix
     ./global/backlight.nix
+    ./global/inputmethod.nix
   ] ++ [
     ./desktop/bspwm.nix
   ];
