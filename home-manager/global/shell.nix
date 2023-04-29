@@ -31,5 +31,11 @@
     enableSyntaxHighlighting = true;
     autocd = true;
     completionInit = "autoload -U compinit && compinit";
+    initExtra =
+    ''
+    if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+      exec startx
+    fi
+    '';
   };
 }
