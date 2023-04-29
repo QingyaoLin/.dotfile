@@ -69,4 +69,23 @@ in
       };
     };
   };
+
+  # 启动 bspwm targets 步骤:
+  #   graphical-session-pre.target ->
+  #   graphical-session.target     ->
+  #   bspwm-session.target
+  systemd.user.targets.bspwm-session = {
+    Unit = {
+      Description = "bspwm session";
+      # man systemd.special
+      Documentation = "man:systemd.special(7)";
+      # bspwm-session.target 激活时也激活 graphical-session.target
+      BindsTo = [ "graphical-session.target" ];
+      # 要求先启动 graphical-session-pre.target 再启动 bspwm-session.target
+      Wants = [ "graphical-session-pre.target" ];
+      After = [ "graphical-session-pre.target" ];
+      # 当停止 bspwm 时，停止 graphical-session.target
+      PropagatesStopTo = [ "graphical-session.target" ];
+    };
+  };
 }
