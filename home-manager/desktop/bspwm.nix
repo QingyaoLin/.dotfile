@@ -35,9 +35,6 @@ in
     ];
     extraConfigEarly =
       ''
-        # java gui fixes
-        export _JAVA_AWT_WM_NONREPARENTING=1
-        
         bspc monitor -d I II III IV V
       '';
     settings = {
