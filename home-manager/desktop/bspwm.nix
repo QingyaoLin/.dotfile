@@ -35,6 +35,7 @@ in
     ];
     extraConfigEarly =
       ''
+        systemctl --user start bspwm-session.target
         bspc monitor -d I II III IV V
       '';
     settings = {
