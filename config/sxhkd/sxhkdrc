@@ -40,7 +40,8 @@ super + o ; {b,t}
 
 # quit bspwm
 super + alt + q
-	bspc quit
+	bspc quit; \
+	systemctl --user stop bspwm-session.target
 
 # close and kill
 super + {_,shift + }w
