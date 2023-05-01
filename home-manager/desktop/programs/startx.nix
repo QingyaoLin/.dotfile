@@ -18,14 +18,12 @@
                 eval $(dbus-launch --exit-with-session --sh-syntax)
         fi
 
-        systemctl --user import-environment DISPLAY XAUTHORITY
+        systemctl --user import-environment DISPLAY XAUTHORITY XDG_SESSION_ID
 
         if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-                dbus-update-activation-environment DISPLAY XAUTHORITY
+                dbus-update-activation-environment DISPLAY XAUTHORITY XDG_SESSION_ID
         fi
 
-        # 设置 session lock 超时的时间
-        xset s 600
         # 合并 .Xresources 配置,设置鼠标主题
         xrdb -merge ~/.Xresources
         xsetroot -cursor_name left_ptr
