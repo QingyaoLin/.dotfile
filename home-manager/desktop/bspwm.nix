@@ -18,19 +18,13 @@ in
   home.packages = with pkgs; [
     polkit_gnome
     numlockx
-    xss-lock
   ];
 
   xsession.windowManager.bspwm = {
     enable = true;
     startupPrograms = [
-      "sxhkd"
       "numlockx on"
-      "polybar -q mybar"
-      "xss-lock --ignore-sleep -- i3lock-fancy"
       "fcitx5"
-      "picom --experimental-backends"
-      "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
     extraConfigEarly =
