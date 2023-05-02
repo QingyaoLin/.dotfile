@@ -3,7 +3,7 @@
 let
   wallpaper = "/home/lqy/.wallpaper";
   extraArgs = [
-    "no-fehbg"
+    "--no-fehbg"
   ];
 in
 {
