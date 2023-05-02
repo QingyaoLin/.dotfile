@@ -177,13 +177,11 @@ in {
     systemd.user.services.polybar = {
       Unit = {
         Description = "Polybar status bar";
-        # 在 graphical-session.target 启动之后才能启动
-        After = [ "graphical-session.target" ];
-        # 当停止或重启 bspwm-session.target 时，也停止或重启
-        PartOf = [ "bspwm-session.target" ];
+        PartOf = [ "graphical-session.target" ];
       };
 
       Service = {
+        Type = "simple";
         ExecStart = concatStringsSep " " (
           [
             "${cfg.package}/bin/polybar"
@@ -192,7 +190,6 @@ in {
         );
       };
 
-      # 跟随 bspwm-session.target 的启动
       Install = {
         WantedBy = [ "bspwm-session.target" ];
       };

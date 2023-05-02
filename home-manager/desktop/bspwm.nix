@@ -79,8 +79,6 @@ in
       # 要求先启动 graphical-session-pre.target 再启动 bspwm-session.target
       Wants = [ "graphical-session-pre.target" ];
       After = [ "graphical-session-pre.target" ];
-      # 当停止 bspwm 时，停止 graphical-session.target
-      PropagatesStopTo = [ "graphical-session.target" ];
     };
   };
 }

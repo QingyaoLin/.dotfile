@@ -11,11 +11,11 @@ in
     Unit = {
       Description = "Run every 1h feh services";
       Documentation = [ "man:systemd.timers(5)" ];
-      After = [ "graphical-session.target" ];
-      PartOf = [ "bspwm-session.target" ];
+      PartOf = [ "graphical-session.target" ];
     };
 
     Timer = {
+      OnActiveSec = "1s";
       OnCalendar = "*:*:30";
     };
 

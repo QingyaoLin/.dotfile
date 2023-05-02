@@ -183,8 +183,7 @@ in {
       systemd.user.services.dunst = {
         Unit = {
           Description = "Dunst notification daemon";
-          After = [ "graphical-session.target" ];
-          PartOf = [ "bspwm-session.target" ];
+          PartOf = [ "graphical-session.target" ];
         };
 
         Service = {

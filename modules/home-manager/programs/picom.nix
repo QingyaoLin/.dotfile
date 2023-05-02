@@ -312,8 +312,7 @@ in {
     systemd.user.services.picom = {
       Unit = {
         Description = "Picom X11 compositor";
-        After = [ "graphical-session.target" ];
-        PartOf = [ "bspwm-session.target" ];
+        PartOf = [ "graphical-session.target" ];
       };
 
       Service = {
