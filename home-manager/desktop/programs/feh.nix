@@ -2,7 +2,9 @@
 
 let
   wallpaper = "/home/lqy/.wallpaper";
-  extraArgs = [];
+  extraArgs = [
+    "no-fehbg"
+  ];
 in
 {
   programs.feh.enable = true;
