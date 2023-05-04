@@ -12,30 +12,32 @@ in
     ./programs/picom.nix
     ./programs/startx.nix
     ./programs/i3lock.nix
+    ./porgrams/numlock.nix
     ./programs/polybar.nix
   ];
 
   home.packages = with pkgs; [
     polkit_gnome
-    numlockx
+    # numlockx
     xss-lock
   ];
 
   xsession.windowManager.bspwm = {
     enable = true;
     startupPrograms = [
-      "dunst"
+      # "dunst"
       "sxhkd"
       "fcitx5"
-      "numlockx"
+      # "numlockx"
       "polybar -q mybar"
-      "picom --experimental-backends"
+      # "picom --experimental-backends"
       "xss-lock --ignore-sleep -- i3lock-fancy"
       "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
     extraConfigEarly =
       ''
+        systemctl --user start bspwm-session.target
         bspc monitor -d I II III IV V
       '';
     settings = {
@@ -68,6 +70,25 @@ in
       "Dunst" = {
         layer = "above";
       };
+    };
+  };
+  
+  # 启动 bspwm targets 步骤:
+  #   graphical-session-pre.target ->
+  #   graphical-session.target     ->
+  #   bspwm-session.target
+  systemd.user.targets.bspwm-session = {
+    Unit = {
+      Description = "bspwm session";
+      # man systemd.special
+      Documentation = "man:systemd.special(7)";
+      # bspwm-session.target 激活时也激活 graphical-session.target
+      BindsTo = [ "graphical-session.target" ];
+      # 要求先启动 graphical-session-pre.target 再启动 bspwm-session.target
+      Wants = [ "graphical-session-pre.target" ];
+      After = [ "graphical-session-pre.target" ];
+      # 当停止 bspwm 时，停止 graphical-session.target
+      PropagatesStopTo = [ "graphical-session.target" ];
     };
   };
 }
