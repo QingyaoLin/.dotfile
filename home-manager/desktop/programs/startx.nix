@@ -12,8 +12,6 @@
   home.file.".xinitrc" = {
     text =
       ''
-        xrandr
-
         if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
                 eval $(dbus-launch --exit-with-session --sh-syntax)
         fi
@@ -23,6 +21,9 @@
         if command -v dbus-update-activation-environment >/dev/null 2>&1; then
                 dbus-update-activation-environment DISPLAY XAUTHORITY XDG_SESSION_ID
         fi
+
+        # 设置锁屏超时时间
+        set s 600 600
 
         # 合并 .Xresources 配置,设置鼠标主题
         xrdb -merge ~/.Xresources

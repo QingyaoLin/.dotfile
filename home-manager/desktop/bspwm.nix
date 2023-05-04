@@ -18,6 +18,7 @@ in
   home.packages = with pkgs; [
     polkit_gnome
     numlockx
+    xss-lock
   ];
 
   xsession.windowManager.bspwm = {
@@ -25,11 +26,14 @@ in
     startupPrograms = [
       "numlockx on"
       "fcitx5"
+      "xss-lock --ignore-sleep -- i3lock-fancy"
+      "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
+      "picom --experimental-backends"
+      "dunst"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
     extraConfigEarly =
       ''
-        systemctl --user start bspwm-session.target
         bspc monitor -d I II III IV V
       '';
     settings = {
@@ -62,23 +66,6 @@ in
       "Dunst" = {
         layer = "above";
       };
-    };
-  };
-
-  # 启动 bspwm targets 步骤:
-  #   graphical-session-pre.target ->
-  #   graphical-session.target     ->
-  #   bspwm-session.target
-  systemd.user.targets.bspwm-session = {
-    Unit = {
-      Description = "bspwm session";
-      # man systemd.special
-      Documentation = "man:systemd.special(7)";
-      # bspwm-session.target 激活时也激活 graphical-session.target
-      BindsTo = [ "graphical-session.target" ];
-      # 要求先启动 graphical-session-pre.target 再启动 bspwm-session.target
-      Wants = [ "graphical-session-pre.target" ];
-      After = [ "graphical-session-pre.target" ];
     };
   };
 }

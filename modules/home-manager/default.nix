@@ -4,7 +4,4 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
-  polybar = import ./programs/polybar.nix;
-  picom = import ./programs/picom.nix;
-  dunst = import ./programs/dunst.nix;
 }

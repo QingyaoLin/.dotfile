@@ -7,19 +7,12 @@
   # 禁用 home-manager 的模块
   # https://github.com/nix-community/home-manager/issues/602
   # https://nixos.org/manual/nixos/stable/#sec-replace-modules
-  disabledModules = [
-    "services/polybar.nix"
-    "services/picom.nix"
-    "services/dunst.nix"
-  ];
-  
+  disabledModules = [];
+
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
-    outputs.homeManagerModules.polybar
-    outputs.homeManagerModules.picom
-    outputs.homeManagerModules.dunst
   ] ++ [
     # Or modules exported from other flakes (such as nix-colors):
     inputs.nix-colors.homeManagerModules.default
