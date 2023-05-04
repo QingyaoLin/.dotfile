@@ -28,6 +28,7 @@ in
       "sxhkd"
       "fcitx5"
       "numlockx"
+      "polybar -q mybar"
       "picom --experimental-backends"
       "xss-lock --ignore-sleep -- i3lock-fancy"
       "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
