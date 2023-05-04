@@ -24,12 +24,13 @@ in
   xsession.windowManager.bspwm = {
     enable = true;
     startupPrograms = [
-      "numlockx on"
+      "dunst"
+      "sxhkd"
       "fcitx5"
+      "numlockx"
+      "picom --experimental-backends"
       "xss-lock --ignore-sleep -- i3lock-fancy"
       "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
-      "picom --experimental-backends"
-      "dunst"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
     extraConfigEarly =
