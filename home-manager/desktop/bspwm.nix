@@ -18,7 +18,6 @@ in
 
   home.packages = with pkgs; [
     polkit_gnome
-    # numlockx
     xss-lock
   ];
 
