@@ -1,8 +1,6 @@
 { lib, config, pkgs, ... }:
 
 {
-  # home.language.base = "en_US.UTF-8";
-
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
@@ -31,11 +29,5 @@
     enableSyntaxHighlighting = true;
     autocd = true;
     completionInit = "autoload -U compinit && compinit";
-    # initExtra =
-    # ''
-    # if [ -z "''${DISPLAY}" ] && [ "''${XDG_VTNR}" -eq 1 ]; then
-    #   exec startx
-    # fi
-    # '';
   };
 }
