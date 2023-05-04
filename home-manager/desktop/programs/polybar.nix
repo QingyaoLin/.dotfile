@@ -9,6 +9,7 @@ in
     package = pkgs.polybar.override {
       pulseSupport = true;
     };
+    script = "polybar -q mybar";
     settings = {
       "bar/mybar" = {
         bottom = false;
