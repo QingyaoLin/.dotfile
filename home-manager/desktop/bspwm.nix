@@ -25,12 +25,9 @@ in
   xsession.windowManager.bspwm = {
     enable = true;
     startupPrograms = [
-      # "dunst"
       "sxhkd"
       # "fcitx5"
-      # "numlockx"
       "polybar -q mybar"
-      # "picom --experimental-backends"
       "xss-lock --ignore-sleep -- i3lock-fancy"
       "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
