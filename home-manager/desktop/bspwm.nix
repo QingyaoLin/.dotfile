@@ -27,7 +27,7 @@ in
     startupPrograms = [
       # "dunst"
       "sxhkd"
-      "fcitx5"
+      # "fcitx5"
       # "numlockx"
       "polybar -q mybar"
       # "picom --experimental-backends"
