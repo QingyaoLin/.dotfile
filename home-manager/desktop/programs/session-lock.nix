@@ -18,9 +18,6 @@
   };
 
   systemd.user.services.xss-lock = {
-    Service = {
-      ExecStartPre = " systemctl --user import-environment XDG_SESSION_ID";
-    };
     Install = lib.mkForce ({
       WantedBy = [ "bspwm-session.target" ];
     });
