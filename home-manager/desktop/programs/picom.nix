@@ -108,4 +108,10 @@
         };
     };
   };
+  
+  systemd.user.services.picom = {
+    Install = lib.mkForce ({
+      WantedBy = [ "bspwm-session.target" ];
+    });
+  };
 }
