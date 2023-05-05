@@ -12,7 +12,7 @@ in
     ./programs/picom.nix
     ./programs/startx.nix
     ./programs/i3lock.nix
-    ./porgrams/numlock.nix
+    ./programs/numlock.nix
     ./programs/polybar.nix
   ];
 
