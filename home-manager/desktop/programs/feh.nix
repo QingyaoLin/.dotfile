@@ -12,7 +12,7 @@
     };
     Timer = {
       OnActiveSec = "0s";
-      OnUnitActiveSec = "10s";
+      OnUnitActiveSec = "30min";
     };
     Install = {
       WantedBy = [ "bspwm-session.target" ];
