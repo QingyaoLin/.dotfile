@@ -29,7 +29,7 @@ in
       # "polybar -q mybar"
       "xss-lock --ignore-sleep -- i3lock-fancy"
       # "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
-      "polkit-gnome-authentication-agent-1"
+      "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
     extraConfigEarly =
       ''
