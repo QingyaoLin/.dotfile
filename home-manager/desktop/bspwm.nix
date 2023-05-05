@@ -11,14 +11,13 @@ in
     ./programs/dunst.nix
     ./programs/picom.nix
     ./programs/startx.nix
-    ./programs/i3lock.nix
     ./programs/numlock.nix
     ./programs/polybar.nix
+    ./programs/session-lock.nix
   ];
 
   home.packages = with pkgs; [
     polkit_gnome
-    xss-lock
   ];
 
   xsession.windowManager.bspwm = {
@@ -27,7 +26,7 @@ in
       "sxhkd"
       # "fcitx5"
       # "polybar -q mybar"
-      "xss-lock --ignore-sleep -- i3lock-fancy"
+      # "xss-lock --ignore-sleep -- i3lock-fancy"
       # "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
