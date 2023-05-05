@@ -170,4 +170,24 @@ in
       };
     };
   };
+  
+  # 覆盖原有的 polybar.service
+  systemd.user.services.polybar = lib.mkForce({
+    Unit = {
+      Description = "Polybar status bar";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.polybar}/bin/polybar -q mybar";
+      ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
+      Restart = "on-failure";
+      KillMode = "mixed";
+    };
+
+    Install = {
+      WantedBy = [ "bspwm-session.target" ];
+    };
+  });
 }
