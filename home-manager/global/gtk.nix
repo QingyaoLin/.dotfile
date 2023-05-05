@@ -8,8 +8,8 @@ in
 
   gtk.cursorTheme = {
     package = pkgs.catppuccin-cursors.macchiatoPink;
-    # gtk-cursor-theme-name: cursor 目录中 index.theme 中的 [icon theme] -> Name
-    name = "Catppuccin-Macchiato-Pink";
+    # gtk-cursor-theme-name: 目录名称
+    name = "Catppuccin-Macchiato-Pink-Cursors";
     size = 32;
   };
 
