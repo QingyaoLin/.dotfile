@@ -22,9 +22,6 @@
                 dbus-update-activation-environment DISPLAY XAUTHORITY XDG_SESSION_ID
         fi
 
-        # 设置锁屏超时时间
-        set s 600 600
-
         # 合并 .Xresources 配置,设置鼠标主题
         xrdb -merge ~/.Xresources
         xsetroot -cursor_name left_ptr
