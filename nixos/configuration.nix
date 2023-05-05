@@ -86,9 +86,6 @@
 
   ];
 
-  # links /libexec from derivations to /run/current-system/sw
-  environment.pathsToLink = [ "/libexec" ];
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
