@@ -18,8 +18,9 @@
     inputs.nix-colors.homeManagerModules.default
   ] ++ [
     # You can also split up your configuration and import pieces of it here:
-    ./global/git.nix
+    /global/qt.nix
     ./global/gtk.nix
+    ./global/git.nix
     ./global/vim.nix
     ./global/music.nix
     ./global/clash.nix
