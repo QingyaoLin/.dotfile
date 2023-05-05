@@ -8,9 +8,9 @@
   services.screen-locker = {
     enable = true;
     lockCmd = "${pkgs.i3lock-fancy}/bin/i3lock-fancy";
-    inactiveInterval = 10; # 超时 10分钟
+    inactiveInterval = 10; # 设置 timeout 10分钟
     xss-lock = {
-      screensaverCycle = 600; # 设置 cycle
+      screensaverCycle = 600; # 设置 cycle 10分钟
       extraOptions = [
         "--ignore-sleep"
       ];
