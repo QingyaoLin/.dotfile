@@ -4,7 +4,7 @@
   home.file.".Xresources" = {
     text =
       ''
-        Xcursor.theme: Catppuccin-Macchiato-Pink
+        Xcursor.theme: Catppuccin-Macchiato-Pink-Cursors
         Xcursor.size: 32
       '';
   };
