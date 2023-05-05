@@ -170,9 +170,9 @@ in
       };
     };
   };
-  
+
   # 覆盖原有的 polybar.service
-  systemd.user.services.polybar = lib.mkForce({
+  systemd.user.services.polybar = lib.mkForce ({
     Unit = {
       Description = "Polybar status bar";
       PartOf = [ "graphical-session.target" ];

@@ -3,7 +3,7 @@
 
 {
   programs.feh.enable = true;
-  
+
   systemd.user.timers.feh = {
     Unit = {
       Description = "Runs wallpaperscript every 10 minutes";

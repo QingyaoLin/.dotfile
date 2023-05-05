@@ -51,7 +51,7 @@ in
       };
     };
   };
-  
+
   # 追加的部分服务
   systemd.user.services.dunst = {
     Install = {

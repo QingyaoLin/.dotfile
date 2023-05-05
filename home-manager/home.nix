@@ -7,7 +7,7 @@
   # 禁用 home-manager 的模块
   # https://github.com/nix-community/home-manager/issues/602
   # https://nixos.org/manual/nixos/stable/#sec-replace-modules
-  disabledModules = [];
+  disabledModules = [ ];
 
   # You can import other home-manager modules here
   imports = [

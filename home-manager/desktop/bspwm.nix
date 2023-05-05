@@ -68,7 +68,7 @@ in
       };
     };
   };
-  
+
   # 启动 bspwm targets 步骤:
   #   graphical-session-pre.target ->
   #   graphical-session.target     ->
