@@ -26,9 +26,9 @@ in
     startupPrograms = [
       "sxhkd"
       # "fcitx5"
-      "polybar -q mybar"
+      # "polybar -q mybar"
       "xss-lock --ignore-sleep -- i3lock-fancy"
-      "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
+      # "feh --no-fehbg --bg-fill --randomize ~/.wallpaper/*"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     ];
     extraConfigEarly =
