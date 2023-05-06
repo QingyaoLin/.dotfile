@@ -9,7 +9,6 @@ in
     package = pkgs.polybar.override {
       pulseSupport = true;
     };
-    script = "polybar -q mybar";
     settings = {
       "bar/mybar" = {
         bottom = false;
@@ -180,7 +179,7 @@ in
     };
 
     Service = {
-      ExecStart = "${pkgs.polybar}/bin/polybar -q mybar";
+      ExecStart = "${pkgs.polybar}/bin/polybar";
       ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
       Restart = "on-failure";
       KillMode = "mixed";
